@@ -1,0 +1,29 @@
+#!/system/bin/sh
+
+#be sure system is writeable
+./system/bin/mount -o remount,rw /system
+
+#remove old keyboard
+./system/bin/rm /system/usr/keychars/asusdec.kcm
+./system/bin/rm /system/usr/keylayout/asusdec.kl
+
+#copy new keyboard and adapt permissions
+./system/xbin/busybox cp /data/data/com.cyanogenmod.settings.device/asusdec.kcm /system/usr/keychars/asusdec.kcm
+./system/xbin/busybox chown 0:0 /system/usr/keychars/asusdec.kcm
+./system/xbin/busybox chmod 644 /system/usr/keychars/asusdec.kcm
+./system/xbin/busybox cp /data/data/com.cyanogenmod.settings.device/asusdec.kl /system/usr/keylayout/asusdec.kl
+./system/xbin/busybox chown 0:0 /system/usr/keylayout/asusdec.kl
+./system/xbin/busybox chmod 644 /system/usr/keylayout/asusdec.kl
+
+#cleanup
+./system/xbin/busybox rm /data/data/com.cyanogenmod.settings.device/asusdec.kcm
+./system/xbin/busybox rm /data/data/com.cyanogenmod.settings.device/asusdec.kl
+
+#sync before going ro
+./system/bin/sync
+
+#make system ro again for safety
+./system/bin/mount -o remount,ro /system
+
+./system/bin/setprop sys.dockkeys.change 2
+

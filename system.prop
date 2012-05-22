@@ -1,0 +1,4 @@
+#
+# system.prop for tf201
+#
+ro.carrier=wifi-only
