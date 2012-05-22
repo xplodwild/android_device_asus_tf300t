@@ -17,13 +17,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/asus/tf201/tf201-vendor.mk)
+$(call inherit-product-if-exists, vendor/asus/tf300t/tf300t-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/asus/tf201/overlay
+DEVICE_PACKAGE_OVERLAYS += device/asus/tf300t/overlay
 
 # Prebuilt kernel location
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/asus/tf201/kernel
+	LOCAL_KERNEL := device/asus/tf300t/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -64,7 +64,7 @@ $(call inherit-product, $(LOCAL_PATH)/keylayout/l10n/l10n.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/nvram_4329.txt:system/etc/nvram_4329.txt \
     $(LOCAL_PATH)/prebuilt/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
-    $(LOCAL_PATH)/prebuilt/firmware/TF201-RS_M6Mo.bin:system/etc/firmware/camera/TF201-RS_M6Mo.bin \
+    $(LOCAL_PATH)/prebuilt/firmware/TF300T-RS_M6Mo.bin:system/etc/firmware/camera/TF300T-RS_M6Mo.bin \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -124,8 +124,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Prime spacific overrides
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.epad.model=TF201 \
-    ro.product.model=TF201
+    ro.epad.model=TF300T \
+    ro.product.model=TF300T
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
@@ -138,8 +138,8 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329
 
 # Device nameing
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_tf201
-PRODUCT_DEVICE := tf201
-PRODUCT_MODEL := tf201
+PRODUCT_NAME := full_tf300t
+PRODUCT_DEVICE := tf300t
+PRODUCT_MODEL := tf300t
 PRODUCT_BRAND := asus
 PRODUCT_MANUFACTURER := asus

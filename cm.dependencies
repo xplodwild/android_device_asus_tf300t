@@ -1,8 +1,8 @@
 [
  {
-   "repository": "android_kernel_asus_tf201",
-   "target_path": "kernel/asus/tf201",
-   "branch": "rel-14r7-cleanup"
+   "repository": "android_kernel_asus_tf300t",
+   "target_path": "kernel/asus/tf300t",
+   "branch": "ics"
  }
 ]
 

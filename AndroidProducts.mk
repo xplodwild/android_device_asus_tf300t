@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_tf201.mk
+    $(LOCAL_DIR)/device_tf300t.mk

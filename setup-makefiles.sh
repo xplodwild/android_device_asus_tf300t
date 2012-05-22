@@ -1,6 +1,6 @@
 #!/bin/sh
 VENDOR=asus
-DEVICE=tf201
+DEVICE=tf300t
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
