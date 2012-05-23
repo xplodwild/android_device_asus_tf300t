@@ -107,10 +107,6 @@ PRODUCT_PACKAGES += \
     com.cyanogenmod.asusdec \
     libasusdec_jni
 
-# Build Some Extra Apps
-PRODUCT_PACKAGES += \
-    Torch
-
 # Propertys spacific for this device
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
