@@ -5,7 +5,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
-LOCAL_PACKAGE_NAME := AutoParts_tf300t
+LOCAL_PACKAGE_NAME := AutoParts
 LOCAL_CERTIFICATE := platform
 LOCAL_JAVA_LIBRARIES := com.cyanogenmod.asusdec
 
