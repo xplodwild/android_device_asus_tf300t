@@ -49,7 +49,7 @@ PRODUCT_COPY_FILES += \
 # Input device configeration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
-    $(LOCAL_PATH)/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
+    $(LOCAL_PATH)/idc/elan-touchscreen.idc:system/usr/idc/elan-touchscreen.idc \
     $(LOCAL_PATH)/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
     $(LOCAL_PATH)/keychars/asusdec.kcm:system/usr/keychars/asusdec.kcm \
     $(LOCAL_PATH)/keylayout/asusdec.kl:system/usr/keylayout/asusdec.kl \
