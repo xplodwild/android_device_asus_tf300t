@@ -63,7 +63,6 @@ $(call inherit-product, $(LOCAL_PATH)/keylayout/l10n/l10n.mk)
 # Camera/WiFi/BT Firmware
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/nvram.txt:system/etc/nvram_4329.txt \
-    $(LOCAL_PATH)/prebuilt/nvram.txt:data/misc/wifi/nvram.txt \
     $(LOCAL_PATH)/prebuilt/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
     $(LOCAL_PATH)/prebuilt/firmware/TF201-RS_M6Mo.bin:system/etc/firmware/camera/TF300T-RS_M6Mo.bin \
 
