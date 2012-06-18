@@ -43,3 +43,5 @@
 /dev/touch_debug 0666    system  system
 /dev/touchpanel 0660     system  system 
 /dev/elan-iap   0660     system  system
+/dev/rfkill     0660    wifi    wifi
+
