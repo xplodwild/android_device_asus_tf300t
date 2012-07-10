@@ -22,7 +22,7 @@ PRODUCT_PACKAGES += \
     	Camera
 
 # Inherit full-base
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from toro device
 $(call inherit-product, device/asus/tf300t/device_tf300t.mk)
@@ -32,6 +32,6 @@ $(call inherit-product, device/asus/tf300t/device_tf300t.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := full_tf300t
-PRODUCT_DEVICE := tf101
+PRODUCT_DEVICE := tf300t
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Transformer Prime TF300T

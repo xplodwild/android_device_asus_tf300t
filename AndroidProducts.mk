@@ -15,4 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_tf300t.mk
+    $(LOCAL_DIR)/device_tf300t.mk \
+    $(LOCAL_DIR)/full_tf300t.mk
