@@ -21,14 +21,14 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
     	Camera
 
-# Inherit full-base
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Inherit from toro device
+# Inherit from device
 $(call inherit-product, device/asus/tf300t/device_tf300t.mk)
 
+# Inherit full-base
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
 # This is where we'd set a backup provider if we had one
-#$(call inherit-product, device/sample/products/backup_overlay.mk)
+# #$(call inherit-product, device/sample/products/backup_overlay.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := full_tf300t

@@ -17,8 +17,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/asus/tf300t/tf300t-vendor.mk)
-
 DEVICE_PACKAGE_OVERLAYS += device/asus/tf300t/overlay
 
 # Files needed for boot image
@@ -36,7 +34,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/cpu.sh:system/bin/cpu.sh \
     $(LOCAL_PATH)/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/prebuilt/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml
+    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    $(LOCAL_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/media_codecs.xml:/system/etc/media_codecs.xml
 
 # Input device configeration files
 PRODUCT_COPY_FILES += \
@@ -57,10 +57,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/nvram.txt:system/etc/nvram_4329.txt \
     $(LOCAL_PATH)/prebuilt/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
     $(LOCAL_PATH)/prebuilt/firmware/TF201-RS_M6Mo.bin:system/etc/firmware/camera/TF300T-RS_M6Mo.bin \
-
-PRODUCT_COPY_FILES += \
-    $Â(LOCAL_PATH)/mixer_paths.xml:/system/etc/mixer_paths.xml
-    $(LOCAL_PATH)/media_codecs.xml:/system/etc/media_codecs.xml
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -124,14 +120,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 
 # Call the vendor to setup propiatory files
-# $(call inherit-product-if-exists, vendor/asus/tf201/tf201-vendor.mk)
+$(call inherit-product, vendor/asus/tf300t/tf300t-vendor.mk)
 
 # Copy bcm4329 firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 # Device nameing
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME :=tf300t
+PRODUCT_NAME := tf300t
 PRODUCT_DEVICE := tf300t
 PRODUCT_MODEL := tf300t
 PRODUCT_BRAND := asus
