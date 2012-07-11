@@ -92,6 +92,7 @@ PRODUCT_PACKAGES += \
     setup_fs \
     audio.a2dp.default \
     audio.usb.default \
+    audio.primary.tegra \
     libaudioutils \
     libinvensense_mpl \
     blobpack_tfp \
