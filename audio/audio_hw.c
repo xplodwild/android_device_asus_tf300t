@@ -40,7 +40,7 @@
 
 #include "audio_route.h"
 
-#define PCM_CARD 0
+#define PCM_CARD 1
 #define PCM_DEVICE 0
 #define PCM_DEVICE_SCO 2
 
