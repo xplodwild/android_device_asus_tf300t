@@ -85,7 +85,7 @@ BOARD_USES_ALSA_AUDIO := false
 
 # Try to build the kernel
 TARGET_KERNEL_SOURCE := kernel/asus/tf300t
-TARGET_KERNEL_CONFIG := android_tf300_cm9_defconfig
+TARGET_KERNEL_CONFIG := tf300t_termleech_defconfig
 
 # Prebuilt Kernel Fallback
 #TARGET_PREBUILT_KERNEL := device/asus/tf300t/kernel
