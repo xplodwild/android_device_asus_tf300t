@@ -135,7 +135,7 @@ PRODUCT_COPY_FILES += \
     device/asus/tf300t/audio_policy.conf:system/etc/audio_policy.conf
 
 # Inherit tablet dalvik settings
-$(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 
 # Call the vendor to setup propiatory files
 $(call inherit-product-if-exists, vendor/asus/tf300t/tf300t-vendor.mk)
