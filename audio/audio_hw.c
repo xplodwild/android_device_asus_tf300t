@@ -40,7 +40,7 @@
 
 #include "audio_route.h"
 
-#define PCM_CARD 1
+#define PCM_CARD 0
 #define PCM_DEVICE 0
 #define PCM_DEVICE_SCO 2
 
@@ -62,18 +62,18 @@
 #define MAX_WRITE_SLEEP_US ((OUT_PERIOD_SIZE * OUT_SHORT_PERIOD_COUNT * 1000000) \
                                 / OUT_SAMPLING_RATE)
 
+#define AUDIO_DEV_PATH "/dev/wm8903"
+#define AUDIO_IOC_MAGIC 0xf7
+#define AUDIO_CAPTURE_MODE _IOW(AUDIO_IOC_MAGIC, 4,int)
+#define INPUT_SOURCE_NORMAL 100
+#define OUTPUT_SOURCE_NORMAL	 200
+
 #define DSP_DEV_PATH "/dev/dsp_fm34"
-#define DSP_IOC_MAGIC	0xf3
+#define DSP_IOC_MAGIC 0xf3
 #define DSP_CONTROL _IOW(DSP_IOC_MAGIC, 1,int)
 #define START_RECORDING 1
 #define END_RECORDING 0
 #define PLAYBACK 2
-
-#define AUDIO_DEV_PATH "/dev/wm8903"
-#define AUDIO_IOC_MAGIC 0xf7
-#define AUDIO_CAPTURE_MODE _IOW(AUDIO_IOC_MAGIC, 6,int)
-#define INPUT_SOURCE_NORMAL 100
-#define OUTPUT_SOURCE_NORMAL 200
 
 bool isRecording = false;
 
@@ -195,7 +195,6 @@ static void select_devices(struct audio_device *adev)
     int speaker_on;
     int main_mic_on;
     int fm34_dev, wm8903_dev;
-    int ret;
 
     fm34_dev = open(DSP_DEV_PATH,0);
 
@@ -213,28 +212,26 @@ static void select_devices(struct audio_device *adev)
     main_mic_on = adev->devices & AUDIO_DEVICE_IN_BUILTIN_MIC;
 
     reset_mixer_state(adev->ar);
-
-    if (main_mic_on) {
-        if (!isRecording) {
-            isRecording = true;
-            ioctl(fm34_dev, DSP_CONTROL, START_RECORDING);
-            ioctl(wm8903_dev, AUDIO_CAPTURE_MODE, INPUT_SOURCE_NORMAL);
-        }
-    } else {
-        if (isRecording) {
-            isRecording = false;
-            ioctl(fm34_dev, DSP_CONTROL, END_RECORDING);
-            ioctl(wm8903_dev, AUDIO_CAPTURE_MODE, OUTPUT_SOURCE_NORMAL);
-        }
-        ioctl(fm34_dev, DSP_CONTROL, PLAYBACK);
-    }
+	if (main_mic_on) {
+		if (!isRecording) {
+			isRecording = true;
+			ioctl(fm34_dev, DSP_CONTROL, START_RECORDING);
+			ioctl(wm8903_dev, AUDIO_CAPTURE_MODE, INPUT_SOURCE_NORMAL);
+        	}
+	} else {
+		if (isRecording) {
+			isRecording = false;
+			ioctl(fm34_dev, DSP_CONTROL, END_RECORDING);
+			ioctl(wm8903_dev, AUDIO_CAPTURE_MODE, OUTPUT_SOURCE_NORMAL);
+		}
+		ioctl(fm34_dev, DSP_CONTROL, PLAYBACK);
+	}
 
     if (speaker_on)
         audio_route_apply_path(adev->ar, "speaker");
     if (headphone_on)
         audio_route_apply_path(adev->ar, "headphone");
     if (main_mic_on) {
-
         if (adev->orientation == ORIENTATION_LANDSCAPE)
             audio_route_apply_path(adev->ar, "main-mic-left");
         else
@@ -1327,7 +1324,7 @@ struct audio_module HAL_MODULE_INFO_SYM = {
         .module_api_version = AUDIO_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = AUDIO_HARDWARE_MODULE_ID,
-        .name = "TF201 audio HW HAL",
+        .name = "TF101 audio HW HAL",
         .author = "The Android Open Source Project",
         .methods = &hal_module_methods,
     },
