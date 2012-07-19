@@ -32,6 +32,6 @@ $(call inherit-product, device/asus/tf300t/device_tf300t.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := full_tf300t
-PRODUCT_DEVICE := tf101
+PRODUCT_DEVICE := tf300t
 PRODUCT_BRAND := asus
-PRODUCT_MODEL := Transformer Prime TF300T
+PRODUCT_MODEL := Transformer Pad TF300T
