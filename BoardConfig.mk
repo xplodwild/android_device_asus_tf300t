@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-BOARD_USES_GENERIC_AUDIO := false
+USE_PROPRIETARY_AUDIO_EXTENSIONS := true
 USE_CAMERA_STUB := false
 
 # inherit from the proprietary version
@@ -35,6 +35,8 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
+
+NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 # Boot/Recovery image settings  
 BOARD_KERNEL_CMDLINE := 
@@ -69,22 +71,26 @@ WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 
-# Todo fix these values to the spacific sizes
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 527433728
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 536870912
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 29850022707
 BOARD_FLASH_BLOCK_SIZE := 4096
+TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+
+# Audio Build Options
+BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_ALSA_AUDIO := false
 
 # Try to build the kernel
 TARGET_KERNEL_SOURCE := kernel/asus/tf300t
 TARGET_KERNEL_CONFIG := android_tf300_cm9_defconfig
 
 # Prebuilt Kernel Fallback
-TARGET_PREBUILT_KERNEL := device/asus/tf300t/kernel
+#TARGET_PREBUILT_KERNEL := device/asus/tf300t/kernel
 
-# Coustom Tools
+# Custom Tools
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf300t/releasetools/tf300t_ota_from_target_files
 
 # Recovery Options
