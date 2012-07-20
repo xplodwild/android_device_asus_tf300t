@@ -96,7 +96,7 @@ PRODUCT_PACKAGES += \
     blobpack_tfp \
     AutoParts_tfp \
     mischelp \
-    com.cyanogenmod.asusdec \	
+    com.cyanogenmod.asusdec \
     libasusdec_jni \
     tinymix \
     tinyplay \
