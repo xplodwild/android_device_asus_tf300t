@@ -142,10 +142,12 @@ on boot
 
 #GPS
     mkdir /data/gps
-    chown system system /data/gps
+    chown gps system /data/gps
     chmod 770 /data/gps
-    chown system system /sys/module/cpu_tegra/parameters/gps_start
+    chown gps system /sys/module/cpu_tegra/parameters/gps_start
     chmod 600 /sys/module/cpu_tegra/parameters/gps_start
+    chown gps system /dev/ttyHS1
+    chmod 0660 /dev/ttyHS1
 
 # Wiimote connect status
     write /data/misc/wminput/connected 0
@@ -155,7 +157,7 @@ on boot
     write /sys/class/gpio/export 162
     write /sys/class/gpio/gpio162/value 0
     write /sys/class/gpio/gpio162/direction out
-    chown root system /sys/class/gpio/gpio162/value
+    chown gps system /sys/class/gpio/gpio162/value
     chmod 0664 /sys/class/gpio/gpio162/value
 
 # NTFS and exFAT support
@@ -266,8 +268,8 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
 # Start GPS daemon
   on boot
   service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-  user root
-  group root
+  user gps
+  group system
   class late_start
 
 # logtool service start
