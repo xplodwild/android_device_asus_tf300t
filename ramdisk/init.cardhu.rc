@@ -13,8 +13,7 @@ on early-init
     symlink /storage/sdcard0 /mnt/sdcard
 
     # create directory for mounting usb drives
-    mkdir /mnt/usbdrive 0666 system system
-    symlink /mnt/usbdrive /usbdrive
+    mkdir /Removable 0755 media_rw media_rw
 
     # make the pathes for the external media mounts
     mkdir /Removable/MicroSD 0666 system system
