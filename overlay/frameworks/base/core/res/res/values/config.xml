@@ -46,7 +46,7 @@
 
     <bool translatable="false" name="config_wifi_p2p_support">true</bool>
 
-    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
+    <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
 
     <bool name="config_wifi_background_scan_support">true</bool>
 
