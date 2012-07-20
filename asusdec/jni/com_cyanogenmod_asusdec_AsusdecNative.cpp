@@ -24,12 +24,12 @@
  */
 JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_asusdec_KeyHandler_nativeToggleTouchpad
   (JNIEnv *env, jclass cls, jboolean status) {
-    LOGD("Switching touchpad %d\n", status);
+    ALOGD("Switching touchpad %d\n", status);
 
     int fd = open(ASUSDEC_DEV, O_RDONLY | O_NONBLOCK);
 
     if (fd < 0) {
-        LOGE("Could  open device %s\n", ASUSDEC_DEV);
+        ALOGE("Could  open device %s\n", ASUSDEC_DEV);
         return -1;
     }
 
@@ -37,12 +37,12 @@ JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_asusdec_KeyHandler_nativeToggleT
     int success = ioctl(fd, ASUSDEC_TP_CONTROL, on);
 
     if (success != 0) {
-        LOGE("Error calling ioctl, %d\n", success);
+        ALOGE("Error calling ioctl, %d\n", success);
     }
 
     close(fd);
 
-    LOGD("Touchpad is %d\n", on);
+    ALOGD("Touchpad is %d\n", on);
     return (jboolean) ((on == 1) ? true : false);
 }
 
@@ -64,7 +64,7 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     jint result = -1;
 
     if (vm->GetEnv((void**) &env, JNI_VERSION_1_4) != JNI_OK) {
-        LOGE("ERROR: GetEnv failed\n");
+        ALOGE("ERROR: GetEnv failed\n");
         goto bail;
     }
     assert(env != NULL);
@@ -72,7 +72,7 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     if(android::AndroidRuntime::registerNativeMethods(
             env, "com/cyanogenmod/asusdec/KeyHandler", gMethods,
             sizeof(gMethods) / sizeof(gMethods[0])) != JNI_OK) {
-        LOGE("Failed to register native methods");
+        ALOGE("Failed to register native methods");
         goto bail;
     }
 
