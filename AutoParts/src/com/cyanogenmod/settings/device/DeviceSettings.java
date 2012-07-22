@@ -128,9 +128,8 @@ public class DeviceSettings extends PreferenceActivity implements
         editor.commit();
 
         String layout = L10N_PREFIX + language;
-// Comment out until CM adds this to CM10
-  //      Settings.System.putString(context.getContentResolver(),
-      //          Settings.System.KEYLAYOUT_OVERRIDES, layout);
+        Settings.System.putString(context.getContentResolver(),
+                Settings.System.KEYLAYOUT_OVERRIDES, layout);
     }
 
     private static String getLayoutPreference(Context context) {
