@@ -141,9 +141,9 @@
 
     <integer name="config_downloadDataDirSize">200</integer>
 
-   <!-- <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string> 
+    <string name="config_networkLocationProviderPackageName">com.google.android.location</string> 
 
-    <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string> -->
+    <string name="config_geocodeProviderPackageName">com.google.android.location</string>
 
     <integer name="config_lidOpenRotation">0</integer>
 
