@@ -32,7 +32,6 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt configeration files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/asound.conf:system/etc/asound.conf \
     $(LOCAL_PATH)/prebuilt/cpu.sh:system/bin/cpu.sh \
     $(LOCAL_PATH)/prebuilt/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml
