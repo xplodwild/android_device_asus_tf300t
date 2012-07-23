@@ -145,12 +145,6 @@
 
     <string name="config_geocodeProvider">com.google.android.location.GeocodeProvider</string> -->
 
-<!-- Indicate whether closing the lid causes the device to go to sleep and opening
-         it causes the device to wake up.
-         The default is false. -->
-    <bool name="config_lidControlsSleep">false</bool>
-
-
     <integer name="config_lidOpenRotation">0</integer>
 
     <integer name="config_lidKeyboardAccessibility">2</integer>
