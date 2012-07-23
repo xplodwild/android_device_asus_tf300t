@@ -152,8 +152,6 @@
          The default is false. -->
     <bool name="config_lidControlsSleep">false</bool>
 
-    <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
-    <bool name="config_unplugTurnsOnScreen">true</bool>
 
     <integer name="config_lidOpenRotation">0</integer>
 
@@ -163,4 +161,6 @@
 
     <string name="config_deviceKeyHandlerLib">/system/framework/com.cyanogenmod.asusdec.jar</string>
     <string name="config_deviceKeyHandlerClass">com.cyanogenmod.asusdec.KeyHandler</string>
+
+    <bool name="config_screenOffAnimation">false</bool>
 </resources>
