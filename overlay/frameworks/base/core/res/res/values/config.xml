@@ -20,8 +20,6 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
-<!-- Software blur is too slow on this device. -->
-    <bool name="config_sf_slowBlur">true</bool>
     <string name="config_datause_iface">wlan0</string>
 
     <bool name="config_batterySdCardAccessibility">true</bool>
