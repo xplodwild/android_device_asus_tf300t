@@ -94,7 +94,7 @@ TARGET_KERNEL_CONFIG := tegra3_android_defconfig
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf300t/releasetools/tf300t_ota_from_target_files
 
 #ICS camera
-ICS_CAMERA_BLOB :=true
+ICS_CAMERA_BLOB := true
 
 # Recovery Options
 BOARD_CUSTOM_BOOTIMG_MK := device/asus/tf300t/recovery/recovery.mk
