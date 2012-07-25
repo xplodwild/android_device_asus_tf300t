@@ -140,15 +140,6 @@ on boot
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
     write /sys/block/mmcblk1/queue/read_ahead_kb 2048
 
-#GPS
-    mkdir /data/gps
-    chown gps system /data/gps
-    chmod 770 /data/gps
-    chown gps system /sys/module/cpu_tegra/parameters/gps_start
-    chmod 600 /sys/module/cpu_tegra/parameters/gps_start
-    chown gps system /dev/ttyHS1
-    chmod 0660 /dev/ttyHS1
-
 # Wiimote connect status
     write /data/misc/wminput/connected 0
     chmod 0666 /data/misc/wminput/connected
@@ -159,6 +150,11 @@ on boot
     write /sys/class/gpio/gpio162/direction out
     chown gps system /sys/class/gpio/gpio162/value
     chmod 0664 /sys/class/gpio/gpio162/value
+    mkdir /data/gps
+    chown gps system /data/gps
+    chmod 770 /data/gps
+    chown gps system /dev/ttyHS1
+    chmod 0660 /dev/ttyHS1
 
 # NTFS and exFAT support
     insmod /sbin/tntfs.ko
