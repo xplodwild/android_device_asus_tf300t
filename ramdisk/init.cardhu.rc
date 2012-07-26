@@ -1,5 +1,4 @@
 import init.cardhu.usb.rc
-import init.cardhu.keyboard.rc
 import init.cardhu.cpu.rc
 
 on early-init

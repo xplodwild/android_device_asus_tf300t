@@ -26,9 +26,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.cardhu.rc:root/init.cardhu.rc\
     $(LOCAL_PATH)/ramdisk/ueventd.cardhu.rc:root/ueventd.cardhu.rc \
     $(LOCAL_PATH)/ramdisk/init.cardhu.usb.rc:root/init.cardhu.usb.rc \
-    $(LOCAL_PATH)/ramdisk/init.cardhu.keyboard.rc:root/init.cardhu.keyboard.rc \
-    $(LOCAL_PATH)/ramdisk/init.cardhu.cpu.rc:root/init.cardhu.cpu.rc \
-    $(LOCAL_PATH)/prebuilt/keyswap::root/sbin/keyswap \
+    $(LOCAL_PATH)/ramdisk/init.cardhu.cpu.rc:root/init.cardhu.cpu.rc
 
 # Prebuilt configeration files
 PRODUCT_COPY_FILES += \
@@ -41,14 +39,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     $(LOCAL_PATH)/idc/elan-touchscreen.idc:system/usr/idc/elan-touchscreen.idc \
     $(LOCAL_PATH)/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
-    $(LOCAL_PATH)/keychars/asusdec.kcm:system/usr/keychars/asusdec.kcm \
-    $(LOCAL_PATH)/keylayout/asusdec.kl:system/usr/keylayout/asusdec.kl \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl
-
 # Localized input keychars and keylayout files
-$(call inherit-product, $(LOCAL_PATH)/keychars/l10n/l10n.mk)
-$(call inherit-product, $(LOCAL_PATH)/keylayout/l10n/l10n.mk)
+    $(LOCAL_PATH)/prebuilt/asusdec.kcm:system/usr/keychars/asusdec.kcm \
+    $(LOCAL_PATH)/prebuilt/asusdec.kl:system/usr/keylayout/asusdec.kl \
+    $(LOCAL_PATH)/prebuilt/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/prebuilt/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl
 
 # Camera/WiFi/BT Firmware
 PRODUCT_COPY_FILES += \
