@@ -40,10 +40,8 @@ import com.android.internal.os.DeviceKeyHandler;
 public final class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = "AsusdecKeyHandler";
 
-//    private static final int MINIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_OFF + 1;
-  //  private static final int MAXIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_ON;
-    private static final int MINIMUM_BACKLIGHT = 1;
-    private static final int MAXIMUM_BACKLIGHT = 255;
+    private static final int MINIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_OFF + 1;
+    private static final int MAXIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_ON;
     private static final String SETTING_TOUCHPAD_STATUS = "touchpad_status";
 
     private final Context mContext;
