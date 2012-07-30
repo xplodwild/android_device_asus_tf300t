@@ -145,6 +145,8 @@
 
     <string name="config_geocodeProviderPackageName">com.google.android.location</string>
 
+    <bool name="config_lidControlsSleep">true</bool>
+
     <integer name="config_lidOpenRotation">0</integer>
 
     <integer name="config_lidKeyboardAccessibility">2</integer>
