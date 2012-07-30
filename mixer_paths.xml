@@ -10,6 +10,8 @@
   <ctl name="HPF Switch" value="0"/>
   <ctl name="Right ADC Input" value="ADC"/>
   <ctl name="Left ADC Input" value="ADC"/>
+  <ctl name="Digital Capture Volume" value="120"/>
+
 
   <path name="speaker">
     <ctl name="Int Spk Switch" value="1" />
