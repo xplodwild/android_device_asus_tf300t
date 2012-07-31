@@ -237,14 +237,11 @@ static void select_devices(struct audio_device *adev)
 
         ALOGE("MIC Is Online");
 
-        ioctl(fm34_dev, DSP_CONTROL, INPUT_SOURCE_AGC);
+        ioctl(fm34_dev, DSP_CONTROL, INPUT_SOURCE_VR);
         ioctl(fm34_dev, DSP_CONTROL, START_RECORDING);
-        ioctl(wm8903_dev, AUDIO_CAPTURE_MODE, INPUT_SOURCE_AGC);
+        ioctl(wm8903_dev, AUDIO_CAPTURE_MODE, INPUT_SOURCE_VR);
 
-        if (adev->orientation == ORIENTATION_LANDSCAPE)
-            audio_route_apply_path(adev->ar, "main-mic-left");
-        else
-            audio_route_apply_path(adev->ar, "main-mic-top");
+        audio_route_apply_path(adev->ar, "main-mic");
     }
 
     update_mixer_state(adev->ar);
