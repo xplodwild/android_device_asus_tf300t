@@ -78,7 +78,6 @@ on boot
     chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/enable
     chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/aggressiveness
     chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/phase_in_adjustments
-    chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/bin_width
 
 # power
     chown system system /sys/kernel/tegra_cap/core_cap_level
@@ -121,10 +120,6 @@ on boot
     #write /sys/module/cpuidle_t3/parameters/lp2_0_in_idle 0
     write /sys/module/cpuidle/parameters/lp2_in_idle 1
     chown system system /sys/devices/system/cpu/cpufreq/interactive/min_sample_input_time
-
-# Display Settings
-    write /sys/devices/nvhost/tegradc.0/smartdimmer/enable 1
-    write /sys/devices/nvhost/tegradc.0/smartdimmer/bin_width 1
 
 # Setup CPU for "balanced" mode 
     setprop sys.cpu.mode 1
