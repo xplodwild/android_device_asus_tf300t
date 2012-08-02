@@ -143,7 +143,7 @@
 
     <bool name="config_lidControlsSleep">true</bool>
 
-    <integer name="config_lidKeyboardAccessibility">2</integer>
+    <integer name="config_lidKeyboardAccessibility">1</integer>
 
     <bool name="config_hasDockBattery">true</bool>
 
