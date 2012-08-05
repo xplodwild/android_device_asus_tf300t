@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 
+#define LOG_TAG "Asusdec-JNI"
 #define ASUSDEC_DEV "/dev/asusdec"
 
 // copied from drivers/input/asusec/asusdec.h
@@ -28,7 +29,7 @@ JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_asusdec_KeyHandler_nativeToggleT
     int fd = open(ASUSDEC_DEV, O_RDONLY | O_NONBLOCK);
 
     if (fd < 0) {
-        ALOGE("Could  open device %s\n", ASUSDEC_DEV);
+        LOGE("Could  open device %s\n", ASUSDEC_DEV);
         return -1;
     }
 
