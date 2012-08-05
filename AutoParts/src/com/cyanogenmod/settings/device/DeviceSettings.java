@@ -158,7 +158,7 @@ public class DeviceSettings extends PreferenceActivity implements
                     Context.MODE_WORLD_READABLE);
             boolean tpEnabled = prefs.getBoolean(PREFS_TOUCHPAD_STATUS, true);
             if (!tpEnabled) {
-                new KeyHandler(context).nativeToggleTouchpad(false);
+                new KeyHandler(context).toggleTouchpad(false);
             }
         }
     }
