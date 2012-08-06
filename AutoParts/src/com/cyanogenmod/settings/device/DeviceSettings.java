@@ -16,55 +16,30 @@
 
 package com.cyanogenmod.settings.device;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Locale;
-
-import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.provider.Settings;
-import android.util.Log;
-import android.os.SystemProperties;
 
 public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
-    private static final String TAG = "DeviceSettings";
 
     public static final String L10N_PREFIX = "asusdec,asusdec-";
 
-    private static final String PREFS_FILE = "device_settings";
-    private static final String PREFS_LANG = "lang";
     private static final String PREFERENCE_CPU_MODE = "cpu_settings";
     private static final String CPU_PROPERTY = "sys.cpu.mode";
 
-    private Context mContext;
     private ListPreference mCpuMode;
 
     @Override
-    @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
 
-        mContext = getApplicationContext();
-
         String mCurrCpuMode = "1";
 
-        if (SystemProperties.get(CPU_PROPERTY) != null)
-            mCurrCpuMode = SystemProperties.get(CPU_PROPERTY);
+        if (System.getProperty(CPU_PROPERTY) != null)
+            mCurrCpuMode = System.getProperty(CPU_PROPERTY);
 
         mCpuMode = (ListPreference) getPreferenceScreen().findPreference(
                 PREFERENCE_CPU_MODE);
@@ -86,7 +61,7 @@ public class DeviceSettings extends PreferenceActivity implements
     public boolean onPreferenceChange(Preference preference, Object value) {
         if (preference.equals(mCpuMode)) {
             final String newCpuMode = (String) value;
-            SystemProperties.set(CPU_PROPERTY, newCpuMode);
+            System.getProperty(CPU_PROPERTY, newCpuMode);
         }
 
         return true;
