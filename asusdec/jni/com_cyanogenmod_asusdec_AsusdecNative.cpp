@@ -4,7 +4,6 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 
-#define LOG_TAG "Asusdec-JNI"
 #define ASUSDEC_DEV "/dev/asusdec"
 
 // copied from drivers/input/asusec/asusdec.h
