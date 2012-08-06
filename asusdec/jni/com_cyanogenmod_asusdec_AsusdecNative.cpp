@@ -29,7 +29,7 @@ JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_asusdec_KeyHandler_nativeToggleT
     int fd = open(ASUSDEC_DEV, O_RDONLY | O_NONBLOCK);
 
     if (fd < 0) {
-        LOGE("Could  open device %s\n", ASUSDEC_DEV);
+        ALOGE("Could  open device %s\n", ASUSDEC_DEV);
         return -1;
     }
 
