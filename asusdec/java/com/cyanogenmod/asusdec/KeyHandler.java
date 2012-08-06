@@ -18,9 +18,11 @@ package com.cyanogenmod.asusdec;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
@@ -73,13 +75,27 @@ public final class KeyHandler implements DeviceKeyHandler {
             if (Settings.Secure.getInt(mContext.getContentResolver(),
                     SETTING_TOUCHPAD_STATUS) == 0) {
                 mTouchpadEnabled = false;
+                nativeToggleTouchpad(false);
             }
         } catch (SettingNotFoundException e) {
         }
 
-        Slog.d(TAG, "current status mTouchpadEnabled=" + mTouchpadEnabled);
-        nativeToggleTouchpad(mTouchpadEnabled);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_DOCK_EVENT);
+        context.registerReceiver(mDockReceiver, filter);
     }
+
+    BroadcastReceiver mDockReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (Intent.ACTION_DOCK_EVENT.equals(intent.getAction())) {
+                int dockMode = intent.getIntExtra(Intent.EXTRA_DOCK_STATE,
+                        Intent.EXTRA_DOCK_STATE_UNDOCKED);
+                if (dockMode != Intent.EXTRA_DOCK_STATE_UNDOCKED) {
+                    nativeToggleTouchpad(mTouchpadEnabled);
+                }
+            }
+        }
+    };
 
     @Override
     public int handleKeyEvent(KeyEvent event) {
