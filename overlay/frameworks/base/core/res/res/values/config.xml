@@ -141,9 +141,11 @@
 
     <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
 
+    <bool name="config_lidControlsSleep">true</bool>    
+
     <integer name="config_lidOpenRotation">0</integer>
 
-    <integer name="config_lidKeyboardAccessibility">2</integer>
+    <integer name="config_lidKeyboardAccessibility">1</integer>
 
     <bool name="config_hasDockBattery">true</bool>
 
@@ -151,4 +153,6 @@
     <string name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.asusdec.KeyHandler</string>
 
     <bool name="config_screenOffAnimation">true</bool>
+
+    <bool name="config_hasRemovableLid">true</bool>
 </resources>
