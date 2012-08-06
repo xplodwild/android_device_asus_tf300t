@@ -61,7 +61,7 @@ public class DeviceSettings extends PreferenceActivity implements
     public boolean onPreferenceChange(Preference preference, Object value) {
         if (preference.equals(mCpuMode)) {
             final String newCpuMode = (String) value;
-            System.getProperty(CPU_PROPERTY, newCpuMode);
+            System.setProperty(CPU_PROPERTY, newCpuMode);
         }
 
         return true;
