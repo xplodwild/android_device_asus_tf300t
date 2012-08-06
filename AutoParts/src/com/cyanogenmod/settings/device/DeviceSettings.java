@@ -24,8 +24,6 @@ import android.preference.PreferenceActivity;
 public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
-    public static final String L10N_PREFIX = "asusdec,asusdec-";
-
     private static final String PREFERENCE_CPU_MODE = "cpu_settings";
     private static final String CPU_PROPERTY = "sys.cpu.mode";
 
