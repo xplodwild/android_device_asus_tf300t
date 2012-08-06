@@ -39,8 +39,6 @@ import android.provider.Settings;
 import android.util.Log;
 import android.os.SystemProperties;
 
-import com.cyanogenmod.asusdec.KeyHandler;
-
 public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "DeviceSettings";
@@ -49,13 +47,10 @@ public class DeviceSettings extends PreferenceActivity implements
 
     private static final String PREFS_FILE = "device_settings";
     private static final String PREFS_LANG = "lang";
-    private static final String PREFS_TOUCHPAD_STATUS = "touchpad_status";
-    private static final String PREFERENCE_KEYBOARD_LAYOUT = "keyboard_layout";
     private static final String PREFERENCE_CPU_MODE = "cpu_settings";
     private static final String CPU_PROPERTY = "sys.cpu.mode";
 
     private Context mContext;
-    private ListPreference mKeyboardLayout;
     private ListPreference mCpuMode;
 
     @Override
@@ -65,11 +60,6 @@ public class DeviceSettings extends PreferenceActivity implements
         addPreferencesFromResource(R.xml.preferences);
 
         mContext = getApplicationContext();
-
-        mKeyboardLayout = (ListPreference) getPreferenceScreen().findPreference(
-                PREFERENCE_KEYBOARD_LAYOUT);
-        mKeyboardLayout.setOnPreferenceChangeListener(this);
-        setLayoutPreferenceValue();
 
         String mCurrCpuMode = "1";
 
@@ -83,18 +73,6 @@ public class DeviceSettings extends PreferenceActivity implements
         mCpuMode.setOnPreferenceChangeListener(this);
     }
 
-    private void setLayoutPreferenceValue() {
-        String layout = getLayoutPreference(mContext);
-        CharSequence[] values = mKeyboardLayout.getEntryValues();
-
-        for (int i = 0; i < values.length; i++) {
-            if (layout.equals(values[i])) {
-                mKeyboardLayout.setValue(layout);
-                return;
-            }
-        }
-    }
-
     private int getCpuModeOffset(String mode) {
         if (mode.equals("0")) {
             return 0;
@@ -106,11 +84,7 @@ public class DeviceSettings extends PreferenceActivity implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object value) {
-        if (preference.equals(mKeyboardLayout)) {
-            final String newLanguage = (String) value;
-            setNewKeyboardLanguage(mContext, newLanguage);
-
-        } else if (preference.equals(mCpuMode)) {
+        if (preference.equals(mCpuMode)) {
             final String newCpuMode = (String) value;
             SystemProperties.set(CPU_PROPERTY, newCpuMode);
         }
@@ -118,48 +92,4 @@ public class DeviceSettings extends PreferenceActivity implements
         return true;
     }
 
-    private static void setNewKeyboardLanguage(Context context, String language) {
-        Log.d(TAG, "Setting new keyboard layout to l10n variant " + language);
-
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_FILE,
-                Context.MODE_WORLD_READABLE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(PREFS_LANG, language);
-        editor.commit();
-
-        String layout = L10N_PREFIX + language;
-//        Settings.System.putString(context.getContentResolver(),
- //               Settings.System.KEYLAYOUT_OVERRIDES, layout);
-    }
-
-    private static String getLayoutPreference(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PREFS_FILE,
-                Context.MODE_WORLD_READABLE);
-        String layout = prefs.getString(PREFS_LANG, "");
-
-        if (layout.equals("")) {
-            layout = Locale.getDefault().toString();
-            Log.d(TAG, "Using default locale " + layout + " as keyboard layout");
-        }
-
-        return layout;
-    }
-
-    public static class BootCompletedReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction() != Intent.ACTION_BOOT_COMPLETED) {
-                return;
-            }
-            String layout = getLayoutPreference(context);
-            setNewKeyboardLanguage(context, layout);
-
-            SharedPreferences prefs = context.getSharedPreferences(PREFS_FILE,
-                    Context.MODE_WORLD_READABLE);
-            boolean tpEnabled = prefs.getBoolean(PREFS_TOUCHPAD_STATUS, true);
-            if (!tpEnabled) {
-//                new KeyHandler(context).enableTouchpad(false);
-            }
-        }
-    }
 }
