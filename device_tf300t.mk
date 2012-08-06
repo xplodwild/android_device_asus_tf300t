@@ -85,15 +85,13 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     audio.a2dp.default \
-    audio.usb.default \
     libaudioutils \
     libinvensense_mpl \
     AutoParts_tfp \
     blobpack_tfp \
     mischelp \
     com.cyanogenmod.asusdec \
-    libasusdec_jni \
-    audio.primary.cardhu
+    libasusdec_jni
 
 # Propertys spacific for this device
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -113,10 +111,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # media files
 PRODUCT_COPY_FILES += \
-    device/asus/tf300t/media_profiles.xml:system/etc/media_profiles.xml \
     device/asus/tf300t/media_codecs.xml:system/etc/media_codecs.xml \
-    device/asus/tf300t/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/asus/tf300t/audio_policy.conf:system/etc/audio_policy.conf
+    device/asus/tf300t/media_profiles.xml:system/etc/media_profiles.xml
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
