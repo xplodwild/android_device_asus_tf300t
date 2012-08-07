@@ -137,10 +137,6 @@
 
     <bool name="config_sms_capable">false</bool>
 
-    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
-
-    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
-
     <bool name="config_lidControlsSleep">true</bool>    
 
     <integer name="config_lidOpenRotation">0</integer>
