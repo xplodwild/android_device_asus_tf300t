@@ -19,9 +19,9 @@ package com.cyanogenmod.settings.device;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import android.preference.PreferenceActivity;
 
-public class DeviceSettings extends PreferenceFragment implements
+public class DeviceSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
     private static final String PREFERENCE_CPU_MODE = "cpu_settings";
@@ -39,7 +39,7 @@ public class DeviceSettings extends PreferenceFragment implements
         if (System.getProperty(CPU_PROPERTY) != null)
             mCurrCpuMode = System.getProperty(CPU_PROPERTY);
 
-        mCpuMode = (ListPreference) findPreference(
+        mCpuMode = (ListPreference) getPreferenceScreen().findPreference(
                 PREFERENCE_CPU_MODE);
 
         mCpuMode.setValueIndex(getCpuModeOffset(mCurrCpuMode));
