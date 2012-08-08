@@ -40,14 +40,6 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
-    # ATD test command interface
-    symlink /sys/bus/i2c/drivers/asusdec/1-0019/ec_lid /data/data/hallsensor_status
-    symlink /sys/bus/i2c/drivers/asusdec/1-0019/ec_status /data/data/docking_status
-    symlink /sys/bus/i2c/drivers/asusdec/1-0019/ec_info /data/data/docking_ecinfo
-    symlink /sys/bus/i2c/drivers/asusdec/1-0019/ec_dock_battery /data/data/docking_battery
-    symlink /sys/bus/i2c/drivers/asuspec/1-0015/ec_status /data/data/ec_status
-    symlink /sys/bus/i2c/drivers/asuspec/1-0015/ec_info /data/data/ec_version
-
 on boot
 
 # bluetooth
@@ -78,7 +70,6 @@ on boot
     chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/enable
     chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/aggressiveness
     chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/phase_in_adjustments
-    chown system system /sys/devices/nvhost/tegradc.0/smartdimmer/bin_width
 
 # power
     chown system system /sys/kernel/tegra_cap/core_cap_level
@@ -93,8 +84,6 @@ on boot
     chown system system /sys/module/cpu_tegra/parameters/pwr_cap_limit_4
 
 # Sensor
-    mkdir /data/sensors 0751 system system
-    mkdir /data/lightsensor 0751 system system
     chmod 666 /dev/nvhost-ctrl
     chmod 666 /dev/nvhost-display
     chmod 666 /dev/nvhost-dsi
@@ -107,7 +96,6 @@ on boot
     chown system system /sys/bus/iio/devices/device0/proximity_enable
 
 # Power management settings
-    chown system system /sys/module/cpu_tegra3/parameters/no_lp
     write /sys/module/cpu_tegra3/parameters/no_lp 0
     #write /sys/module/tegra3_emc/parameters/emc_enable 0
     #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1000000
@@ -121,10 +109,6 @@ on boot
     #write /sys/module/cpuidle_t3/parameters/lp2_0_in_idle 0
     write /sys/module/cpuidle/parameters/lp2_in_idle 1
     chown system system /sys/devices/system/cpu/cpufreq/interactive/min_sample_input_time
-
-# Display Settings
-    write /sys/devices/nvhost/tegradc.0/smartdimmer/enable 1
-    write /sys/devices/nvhost/tegradc.0/smartdimmer/bin_width 1
 
 # Setup CPU for "balanced" mode 
     setprop sys.cpu.mode 1
@@ -166,14 +150,15 @@ on boot
 
 # Touch
     start touch_update
+    chown system system /proc/ektf_dbg
+
+# BB mapping symbolic name to the logging ttyACM port
+    symlink /dev/ttyACM2 /dev/log_modem
 
 # Write Wi-Fi Mac
 service wifimacwriter /system/bin/wifimacwriter
     class main
     oneshot
-
-# BB mapping symbolic name to the logging ttyACM port
-    symlink /dev/ttyACM2 /dev/log_modem
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dnl80211 -iwlan0 -puse_p2p_group_interface=1 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
@@ -358,19 +343,8 @@ service touch_update /system/bin/touch_fw_update --default
     disabled
     oneshot
 
-on property:init.svc.sensors-config=stopped
-    chmod 644 /data/sensors/AMI304_Config.ini
-    chown system system /data/sensors/AMI304_Config.ini
-    chmod 644 /data/sensors/KXTF9_Calibration.ini
-    chown system system /data/sensors/KXTF9_Calibration.ini
-    chmod 644 /data/lightsensor/AL3010_Config.ini
-    chown system system /data/lightsensor/AL3010_Config.ini
-
-# create filesystems if necessary
-service setup_fs /system/bin/setup_fs \
-        /dev/block/platform/sdhci-tegra.3/by-name/UDA \
-        /dev/block/platform/sdhci-tegra.3/by-name/CAC
-    class core
+service BtService /system/bin/sh /system/etc/BtService.sh
     user root
     group root
+    disabled
     oneshot
