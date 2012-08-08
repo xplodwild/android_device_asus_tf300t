@@ -22,7 +22,7 @@ on fs
     mount ext4 /dev/block/mmcblk0p1 /system wait ro
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     setprop ro.crypto.umount_sd false
-    mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev journal_async_commit,data=writeback,nodelalloc
+    mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev journal_async_commit,data=writeback,nodelalloc,errors=panic
     mount ext4 /dev/block/mmcblk0p2 /cache wait noatime nosuid nodev journal_async_commit,data=writeback,nodelalloc
 
 on post-fs-data
