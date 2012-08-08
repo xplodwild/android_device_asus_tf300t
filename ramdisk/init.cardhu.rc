@@ -326,6 +326,15 @@ service ril-daemon-test /system/bin/rild
     group radio cache inet misc audio sdcard_rw
     disabled
 
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs \
+        /dev/block/mmcblk0p8 \
+        /dev/block/mmcblk0p2
+    class core
+    user root
+    group root
+    oneshot
+
 on property:ril.testmode=1
     stop ril-daemon
     start ril-daemon-test
