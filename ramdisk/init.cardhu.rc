@@ -351,9 +351,3 @@ service touch_update /system/bin/touch_fw_update --default
     group system
     disabled
     oneshot
-
-service BtService /system/bin/sh /system/etc/BtService.sh
-    user root
-    group root
-    disabled
-    oneshot
