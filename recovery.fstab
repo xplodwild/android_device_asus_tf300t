@@ -3,7 +3,10 @@
 /system         ext4            /dev/block/mmcblk0p1
 /cache          ext4            /dev/block/mmcblk0p2
 /misc           emmc            /dev/block/mmcblk0p3
-/staging        ext3            /dev/block/mmcblk0p4
-/boot           emmc            /dev/block/mmcblk0p5
-/recovery       emmc            /dev/block/mmcblk0p7
-/data           ext4            /dev/block/mmcblk0p8
+/boot           emmc            boot
+/recovery       emmc            recovery
+/staging        emmc            /dev/block/mmcblk0p4
+/btmac          vfat            /dev/block/mmcblk0p5
+/data           ext4            /dev/block/mmcblk0p8            length=-32768
+/emmc           datamedia       /dev/null
+/sdcard         vfat            /dev/block/mmcblk1p1            /dev/block/mmcblk1

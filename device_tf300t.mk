@@ -85,6 +85,7 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs \
     audio.a2dp.default \
+    tinymix \
     libaudioutils \
     libinvensense_mpl \
     AutoParts_tfp \
