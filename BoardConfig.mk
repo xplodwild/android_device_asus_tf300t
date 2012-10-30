@@ -69,11 +69,10 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER        := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE           := bcmdhd
-#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/bcm4329/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/bcm4329/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P     := "/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin"
+WIFI_DRIVER_FW_PATH_STA     := "/system/vendor/firmware/bcm4329/fw_bcmdhd.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/bcm4329/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P     := "/system/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin"
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
